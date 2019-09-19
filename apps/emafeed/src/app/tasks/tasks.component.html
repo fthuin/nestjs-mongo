@@ -1,0 +1,6 @@
+<button (click)="create()">Add task</button>
+<div *ngFor="let task of tasks$ | async; let idx = index; trackBy: trackByIds">
+  <input type="checkbox" [(ngModel)]="task.done" (ngModelChange)="update(task)" >
+  <input type="text" [(ngModel)]="task.title" [tabIndex]="idx + 1" (blur)="update(task)" #taskTitle [placeholder]="'Task title'">
+  <button (click)="delete(task)">Delete</button>
+</div>
